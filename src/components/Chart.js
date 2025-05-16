@@ -148,7 +148,7 @@ const Chart = (props) => {
           </select>
         </div>
 
-        <div>
+        <div className="form-group">
           <button type="submit">Построить</button>
           <button type="button" onClick={handleClear}>Очистить</button>
         </div>

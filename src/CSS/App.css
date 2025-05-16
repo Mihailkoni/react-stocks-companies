@@ -171,7 +171,7 @@
 .App .filter {
   width: fit-content;
   text-align: center;
-  border-radius: 16px;
+  border-radius: var(--main-border-radius);
   margin: 5px auto;
   padding: 10px;
   border: var(--main-fieldset-border);
@@ -181,7 +181,7 @@
 
 /*анимация при наведении на блок фильтра*/
 .App .filter:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   border: 1px solid var(--main-color-purple);
 }
 
@@ -191,6 +191,7 @@
   color: var(--main-text-color);
   font-family: var(--main-font-family);
   font-size: large;
+  padding: 0 10px;
 }
 
 /*стили для полей ввода*/
@@ -277,9 +278,8 @@
 .App .visualization {
   width: fit-content;
   text-align: center;
-  border-radius: 16px;
+  border-radius: var(--main-border-radius);
   margin: 15px auto;
-  padding: 10px;
   border: var(--main-fieldset-border);
   font-family: var(--main-font-family);
   transition: var(--main-transition);
@@ -305,7 +305,7 @@
 /*cтили для формы визуализации*/
 .App .visualization form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
 }
 
@@ -313,15 +313,17 @@
 .App .visualization .form-group {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   gap: 5px;
   text-align: left;
   padding: 5px;
+  align-items: center;
+  justify-content: center;
 }
 
 /*стили для радио и чекбоксов*/
 .App .visualization input[type="radio"],
 .App .visualization input[type="checkbox"] {
-  
   margin-right: 8px;
 }
 
@@ -357,7 +359,7 @@
   font-family: var(--main-font-family);
   border-radius: var(--main-border-radius);
   border: var(--main-button-border);
-  padding: 8px 16px;
+  padding: 10px;
   margin: 5px;
   background-color: transparent;
   transition: var(--main-transition);
@@ -396,5 +398,89 @@
   padding: 10px;
   box-sizing: border-box;
   font-size: 8px;
+}
+/*end*/
+
+/*cтили для блока сортировки */
+/*start*/
+.App .sort {
+    width: fit-content;
+    text-align: center;
+    border-radius: var(--main-border-radius);
+    margin: 15px auto;
+    padding: 10px;
+    border: var(--main-fieldset-border);
+    font-family: var(--main-font-family);
+    transition: var(--main-transition);
+}
+
+.App .sort:hover {
+    transform: scale(1.02);
+    border: 1px solid var(--main-color-purple);
+}
+
+.App .sort legend {
+    text-align: center;
+    color: var(--main-text-color);
+    font-family: var(--main-font-family);
+    font-size: large;
+    padding: 0 10px;
+}
+
+.App .sort-level {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.App .sort-level label:first-child {
+    min-width: 120px;
+    text-align: right;
+}
+
+.App .sort select {
+    padding: 5px;
+    border-radius: 4px;
+    border: var(--main-input-border);
+    font-family: var(--main-font-family);
+    transition: var(--main-transition);
+}
+
+/*анимация для select при фокусе*/
+.App .sort select:focus {
+  box-shadow: var(--main-input-shadow);
+  background-color: var(--main-color-white);
+  outline: none;
+}
+
+/*анимация для select при наведении*/
+.App .sort select:hover {
+  transform: scale(1.05);
+  color: var(--main-color-white);
+  background-color: var(--main-color-purple);
+}
+
+.App .sort-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.App .sort-buttons button {
+    padding: 10px;
+    margin: 10px;
+    border-radius: var(--main-border-radius);
+    border: var(--main-button-border);
+    background-color: transparent;
+    transition: var(--main-transition);
+    font-family: var(--main-font-family);
+}
+
+.App .sort-buttons button:hover {
+    transform: scale(1.05);
+    color: var(--main-color-white);
+    background-color: var(--main-color-purple);
 }
 /*end*/

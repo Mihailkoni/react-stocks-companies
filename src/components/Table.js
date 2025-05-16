@@ -1,6 +1,7 @@
 import TableHead from './TableHead.js';
 import TableBody from './TableBody.js';
 import Filter from './Filter.js';
+import Sort from './Sort.js';
 import { useState } from 'react';
 
 /*
@@ -13,8 +14,35 @@ import { useState } from 'react';
 
 const Table = (props) => {
 
-    // для фильтрации
     const [dataTable, setDataTable] = useState(props.data);
+    
+    //обработчик сортировки
+    const handleSort = (sortArr) => {
+        if (sortArr.length === 0) {
+            setDataTable(props.data);
+            return;
+        }
+        
+        const sortedData = [...dataTable].sort((a, b) => {
+            for (let param of sortArr) {
+                let aValue, bValue;
+                
+                if (['price', 'capitalization', 'pe', 'ps'].includes(param.column)) {
+                    aValue = Number(a[param.column]);
+                    bValue = Number(b[param.column]);
+                } else {
+                    aValue = String(a[param.column]).toLowerCase();
+                    bValue = String(b[param.column]).toLowerCase();
+                }
+                
+                if (aValue > bValue) return param.order ? -1 : 1;
+                if (aValue < bValue) return param.order ? 1 : -1;
+            }
+            return 0;
+        });
+        setDataTable(sortedData);
+    };
+
     const updateDataTable = (value) => {
         setDataTable(value);
         props.onFilter(value);
@@ -59,6 +87,8 @@ const Table = (props) => {
             data={ dataTable } 
             fullData={ props.data }
         />
+
+        <Sort onSort={handleSort} />
 
         <table>
             <TableHead head={ Object.keys(props.data[0]) } />
