@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import './CSS/App.css';
+import stocks from './data.js';
+import Table from './components/Table.js';
+import Chart from './components/Chart.js';
+import { useState } from 'react';
 
 function App() {
+  const [filteredData, setFilteredData] = useState(stocks);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3 className='title'>Акции российских компаний</h3>
+      <Chart data={filteredData} />
+      <Table 
+        data={stocks} 
+        amountRows="15" 
+        onFilter={setFilteredData}
+      />
     </div>
   );
 }
