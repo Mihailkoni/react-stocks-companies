@@ -123,15 +123,15 @@ const ChartDraw = ({ data, config }) => {
 
   }, [data, config, width, height]);
 
-  // Функция для форматирования значений
+  //форматирование значений
   const formatValue = (value, metric) => {
     if (metric === "price" || metric === "capitalization") {
-      return Math.round(value); // Целые числа для цены и капитализации
+      return Math.round(value); //целые числа для цены и капитализации
     }
-    return value.toFixed(2); // 2 знака после запятой для остальных метрик
+    return value.toFixed(2); //2 знака после запятой для остальных метрик
   };
 
-  // Функция для получения подписи оси
+  //функция для получения подписи оси
   const getAxisLabel = (axis) => {
     switch(axis) {
       case "sector": return "Сектор";
@@ -144,7 +144,7 @@ const ChartDraw = ({ data, config }) => {
     }
   };
 
-  // Функция для получения подписи метрики
+  //функция для получения подписи метрики
   const getMetricLabel = (metric) => {
     switch(metric) {
       case "price": return "Цена (руб)";

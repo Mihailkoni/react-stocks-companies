@@ -37,7 +37,7 @@ const Chart = (props) => {
 
   //подготовка данных для графика
   const prepareChartData = (data) => {
-    //группируем данные по OX
+    //группируем данные по ox
     const grouped = d3.group(data, d => d[config.xAxis]);
     const chartData = [];
 
